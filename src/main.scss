@@ -1,0 +1,235 @@
+$background-color: #333435;
+$text-light: #818181;
+
+.call1800-dialpad {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: $background-color;
+  width: 340px;
+  padding: 25px;
+  z-index: 1000;
+  border-radius: 14px;
+  transition: transform 400ms ease-in-out;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  user-select: none;
+}
+
+.call1800-dialpad_collapsed {
+  transform: translateY(501px); // 501 to not see 'dial' button when collapsed
+}
+
+.call1800-dialpad_collapsed .call1800-dialpad__collapse-button svg {
+  transform: rotate(0);
+}
+
+.call1800-dialpad__collapse-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 40px;
+  background-color: #446fd9;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  svg {
+    height: 15px;
+    width: 15px;
+    transform: rotate(180deg);
+    transition: transform 400ms ease-in-out;
+  }
+}
+
+.call1800-dialpad__status {
+  display: flex;
+  align-items: center;
+}
+
+.call1800-dialpad__status-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: cyan;
+  margin-right: 5px;
+}
+
+.call1800-dialpad_call-in-progress .call1800-dialpad__status-circle {
+  background-color: #16cc27;
+}
+
+.call1800-dialpad_establishing-connection .call1800-dialpad__status-circle {
+  background-color: yellow;
+}
+
+.call1800-dialpad__status-text {
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.call1800-dialpad__number-row {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.call1800-dialpad__input {
+  padding: 10px;
+  background-color: #454647;
+  border-radius: 10px;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+
+  select,
+  input {
+    font-size: 1.2em;
+    color: white;
+    transition: color 400ms ease-out;
+  }
+
+  select {
+    background-color: transparent;
+    border: none;
+  }
+
+  input {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    line-height: 26px;
+    margin-left: 5px;
+    width: 120px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.call1800-dialpad_calling .call1800-dialpad__input {
+  input,
+  select {
+    color: $text-light;
+  }
+}
+
+.call1800-dialpad__call-hangup {
+  flex-shrink: 0;
+  height: 60px;
+  width: 60px;
+  background-color: green;
+  border-radius: 100%;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 400ms ease-out;
+  cursor: pointer;
+
+  svg {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.call1800-dialpad_calling .call1800-dialpad__call-hangup {
+  background-color: #f4595f;
+  transform: rotate(135deg);
+}
+
+.call1800-dialpad__keys {
+  margin-top: 35px;
+  padding: 0 20px;
+}
+
+.call1800-dialpad__keys-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.call1800-dialpad__key {
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+  color: white;
+  transition: all 400ms ease-out;
+  cursor: pointer;
+}
+
+.call1800-dialpad_calling .call1800-dialpad__key {
+  color: $text-light;
+  border-color: $text-light;
+}
+
+.call1800-dialpad__clear-actions {
+  padding: 0 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  transition: all 400ms ease-out;
+}
+
+.call1800-dialpad_calling .call1800-dialpad__clear-actions {
+  color: $text-light;
+
+  svg path {
+    fill: $text-light;
+  }
+}
+
+.call1800-dialpad__clear-all {
+  cursor: pointer;
+}
+
+.call1800-dialpad__clear-last {
+  margin-left: auto;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  svg {
+    height: 30px;
+    width: 30px;
+
+    path {
+      transition: fill 400ms ease-out;
+    }
+  }
+}
+
+.call1800-dialpad__powered-by {
+  margin-top: 10px;
+  text-align: center;
+  color: $text-light;
+  font-size: 0.7em;
+
+  a {
+    color: lightblue;
+  }
+}
+
+@media (max-width: 400px) {
+  .call1800-dialpad {
+    bottom: 20px;
+    left: 2%;
+    right: 2%;
+    width: 96%;
+  }
+
+  .call1800-dialpad__input {
+    input {
+      width: 90px;
+    }
+  }
+}
