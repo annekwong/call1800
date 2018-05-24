@@ -51,8 +51,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    // library: '',
-    library: 'call1800js',
+    library: 'call1800',
     libraryExport: 'default',
     libraryTarget: 'umd',
     // Prevents webpack from referencing `window` in the UMD build

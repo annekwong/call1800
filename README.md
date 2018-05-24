@@ -1,6 +1,6 @@
 <p align="center"><a href="https://call1800.org/" target="_blank"><img width="350"src="logo.png"></a></p>
 
-call1800js is an embeddable element that allows your users make calls to 1800 numbers completely free.
+call1800 is an embeddable element that allows your users make calls to 1800 numbers completely free.
 
 <p align="center"><a href="https://call1800.org/" target="_blank"><img width="350"src="screenshot.jpg"></a></p>
 
@@ -8,7 +8,7 @@ call1800js is an embeddable element that allows your users make calls to 1800 nu
 
 ### via NPM (recommended)
 ```bash
-npm install call1800js
+npm install call1800
 ```
 
 ### via CDN
@@ -25,7 +25,7 @@ npm install call1800js
 
 2. Initialize dialpad with Javascript.
 ```javascript
-import Dialpad from 'call1800js'; // if you used CDN Dialpad class is available at window.Dialpad
+import Dialpad from 'call1800'; // if you used CDN Dialpad class is available at window.Dialpad
 
 const dialpad = new Dialpad();
 dialpad.render();
