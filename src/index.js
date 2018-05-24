@@ -122,7 +122,6 @@ class Dialpad {
     });
 
     this.numberDropdown.addEventListener('change', () => {
-      console.log('onchange');
       this.numberInput.focus();
     });
 
