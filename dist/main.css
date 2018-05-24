@@ -104,15 +104,17 @@
   .call1800-dialpad__input select,
   .call1800-dialpad__input input {
     font-size: 1.2em;
-    color: white;
     -webkit-transition: color 400ms ease-out;
     transition: color 400ms ease-out; }
   .call1800-dialpad__input select {
     background-color: transparent;
-    border: none; }
+    border: none;
+    color: white; }
   .call1800-dialpad__input input {
     padding: 0;
     background-color: transparent;
+    color: transparent;
+    text-shadow: 0 0 0 white;
     border: none;
     line-height: 26px;
     margin-left: 5px;

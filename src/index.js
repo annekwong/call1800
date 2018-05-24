@@ -102,7 +102,6 @@ class Dialpad {
     this.el = createDOM();
     this.sip = null;
     this.calling = false;
-    this.dialpadNumber = '';
 
     this.collapseBtn = this.el.querySelector('#collapse');
     this.callHangUpBtn = this.el.querySelector('#callHangup');
@@ -118,7 +117,17 @@ class Dialpad {
       this.close();
     }
 
-    this.el.addEventListener('click', () => {
+    this.numberInput.addEventListener('input', () => {
+      this.numberInput.value = this.numberInput.value.replace(/[^0-9\*\#]+/, '')
+    });
+
+    this.numberDropdown.addEventListener('change', () => {
+      console.log('onchange');
+      this.numberInput.focus();
+    });
+
+    this.el.addEventListener('click', (event) => {
+      if (event.target === this.numberDropdown) return;
       this.numberInput.focus();
     });
 
@@ -131,20 +140,20 @@ class Dialpad {
     });
 
     this.dialpadKeys.forEach(k => k.addEventListener('click', (e) => {
-      if (this.calling) return;
+      if (this.calling || this.numberInput.value.length === 7) return;
 
       const key = e.target.attributes['data-key'].value;
-      this.updateDialpadNumber(this.dialpadNumber + key);
+      this.numberInput.value += key;
     }));
 
     this.deleteLastBtn.addEventListener('click', () => {
       if (this.calling) return;
-      this.updateDialpadNumber(this.dialpadNumber.slice(0, -1));
+      this.numberInput.value = this.numberInput.value.slice(0, -1);
     });
 
     this.deleteAllBtn.addEventListener('click', () => {
       if (this.calling) return;
-      this.updateDialpadNumber('');
+      this.numberInput.value = '';
     });
   }
 
@@ -164,12 +173,11 @@ class Dialpad {
     this.el.classList.toggle('call1800-dialpad_collapsed');
   }
 
-  updateDialpadNumber(number) {
-    if (number.length > 7) return;
-
-    this.dialpadNumber = number;
-    this.numberInput.value = number;
-  }
+  // updateDialpadNumber(number) {
+  //   if (number.length > 7) return;
+  //
+  //   this.numberInput.value = number;
+  // }
 
   callOrHangUp() {
     // call and hangup method will immediately return if called unnecessarily
@@ -199,12 +207,11 @@ class Dialpad {
         return newOption;
       });
 
-      this.dialpadNumber = number.slice(4);
-      this.numberInput.value = this.dialpadNumber;
+      this.numberInput.value = number.slice(4);
     }
 
     // Check number length
-    const n = this.numberDropdown.value + this.dialpadNumber;
+    const n = this.numberDropdown.value + this.numberInput.value;
     if (n.length !== 11) return;
 
 
