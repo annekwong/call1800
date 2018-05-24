@@ -13,7 +13,7 @@ npm install call1800js
 
 ### via CDN
 ```html
-<link href="<ADD_LINK_HERE>"></link>
+<link rel="stylesheet" href="<ADD_LINK_HERE>">
 <script src="<ADD_LINK_HERE>"></script>
 ```
 
