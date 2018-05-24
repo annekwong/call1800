@@ -122,9 +122,11 @@
     .call1800-dialpad__input input:focus {
       outline: none; }
 
-.call1800-dialpad_calling .call1800-dialpad__input input,
 .call1800-dialpad_calling .call1800-dialpad__input select {
   color: #818181; }
+
+.call1800-dialpad_calling .call1800-dialpad__input input {
+  text-shadow: 0 0 0 #818181; }
 
 .call1800-dialpad__call-hangup {
   -ms-flex-negative: 0;

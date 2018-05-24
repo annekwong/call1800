@@ -114,9 +114,12 @@ $text-light: #818181;
 }
 
 .call1800-dialpad_calling .call1800-dialpad__input {
-  input,
   select {
     color: $text-light;
+  }
+
+  input {
+    text-shadow: 0 0 0 $text-light;
   }
 }
 
