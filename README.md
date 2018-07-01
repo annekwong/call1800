@@ -46,7 +46,7 @@ Available options:
 Example:
 
 ```javascript
-cosnt dialpad = new Dialpad({
+const dialpad = new Dialpad({
   closed: true,
 });
 ```
