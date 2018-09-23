@@ -172,9 +172,14 @@ $text-light: #818181;
   cursor: pointer;
 }
 
-.call1800-dialpad_calling .call1800-dialpad__key {
+.call1800-dialpad_establishing-connection .call1800-dialpad__key {
   color: $text-light;
   border-color: $text-light;
+}
+
+.call1800-dialpad_calling .call1800-dialpad__key {
+  // color: $text-light;
+  // border-color: $text-light;
 }
 
 .call1800-dialpad__clear-actions {

@@ -37,7 +37,7 @@ const createDOM = () => {
         <option>1855</option>
         <option>1844</option>
       </select>
-      <input id="numberInput" type="text" maxlength="7">
+      <input id="numberInput" type="text">
     </div>
     <div id="callHangup" class="call1800-dialpad__call-hangup">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 578.106 578.106" style="enable-background:new 0 0 578.106 578.106;" xml:space="preserve" width="512px" height="512px">
@@ -117,8 +117,9 @@ class Dialpad {
       this.close();
     }
 
-    this.numberInput.addEventListener('input', () => {
-      this.numberInput.value = this.numberInput.value.replace(/[^0-9\*\#]+/, '')
+    this.numberInput.addEventListener('input', (e) => {
+      if (this.calling) this.sip.sendDTMF(e.data);
+      this.numberInput.value = this.numberInput.value.replace(/[^0-9\*\#]+/, '').substring(7, -1);
     });
 
     this.numberDropdown.addEventListener('change', () => {
@@ -139,7 +140,11 @@ class Dialpad {
     });
 
     this.dialpadKeys.forEach(k => k.addEventListener('click', (e) => {
-      if (this.calling || this.numberInput.value.length === 7) return;
+      if (this.calling) {
+        this.sip.sendDTMF(e.target.attributes['data-key'].value);
+        return;
+      }
+      if (this.numberInput.value.length === 7) return;
 
       const key = e.target.attributes['data-key'].value;
       this.numberInput.value += key;

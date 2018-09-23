@@ -190,7 +190,7 @@
   transition: all 400ms ease-out;
   cursor: pointer; }
 
-.call1800-dialpad_calling .call1800-dialpad__key {
+.call1800-dialpad_establishing-connection .call1800-dialpad__key {
   color: #818181;
   border-color: #818181; }
 
