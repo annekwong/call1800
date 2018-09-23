@@ -8,7 +8,7 @@
     "dev": "webpack-cli --watch --mode development",
     "build": "webpack-cli --mode production"
   },
-  "author": "",
+  "author": "call1800.org",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.47",
