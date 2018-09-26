@@ -7,6 +7,7 @@ const WS_SERVERS = 'wss://webrtc.call1800.org:7443';
 const createDOM = () => {
   const el = document.createElement('div');
   el.classList.add('call1800-dialpad');
+  el.classList.add('call1800-dialpad_ready');
   el.innerHTML = `
   <audio id="remoteAudio"></audio>
 
@@ -190,16 +191,6 @@ class Dialpad {
     else this.call();
   }
 
-  toggleCallingOff() {
-    this.el.classList.remove('call1800-dialpad_calling');
-    this.calling = false;
-  }
-
-  toggleCallingOn() {
-    this.el.classList.add('call1800-dialpad_calling');
-    this.calling = true;
-  }
-
   call(number = null) {
     // Already calling
     if (this.calling) return;
@@ -218,9 +209,8 @@ class Dialpad {
     const n = this.numberDropdown.value + this.numberInput.value;
     if (n.length !== 11) return;
 
-
     this.open();
-    this.toggleCallingOn();
+    this.calling = true;
 
     const options = {
       media: {
@@ -249,7 +239,7 @@ class Dialpad {
     });
 
     this.sip.on('ended', () => {
-      this.toggleCallingOff();
+      this.calling = false;
       this.readyStatus();
     });
   }
@@ -257,6 +247,7 @@ class Dialpad {
   clearStatusClasses() {
     this.el.classList.remove('call1800-dialpad_call-in-progress');
     this.el.classList.remove('call1800-dialpad_establishing-connection');
+    this.el.classList.remove('call1800-dialpad_ready');
   }
 
   callInProgressStatus() {
@@ -273,12 +264,13 @@ class Dialpad {
 
   readyStatus() {
     this.clearStatusClasses();
+    this.el.classList.add('call1800-dialpad_ready');
     this.statusText.innerHTML = 'Ready';
   }
 
   hangUp() {
     this.sip.hangup();
-    this.toggleCallingOff();
+    this.calling = false;
     this.readyStatus();
   }
 }

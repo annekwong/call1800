@@ -113,7 +113,7 @@ $text-light: #818181;
   }
 }
 
-.call1800-dialpad_calling .call1800-dialpad__input {
+.call1800-dialpad_call-in-progress .call1800-dialpad__input {
   select {
     color: $text-light;
   }
@@ -142,7 +142,8 @@ $text-light: #818181;
   }
 }
 
-.call1800-dialpad_calling .call1800-dialpad__call-hangup {
+.call1800-dialpad_call-in-progress .call1800-dialpad__call-hangup,
+.call1800-dialpad_establishing-connection .call1800-dialpad__call-hangup {
   background-color: #f4595f;
   transform: rotate(135deg);
 }
@@ -168,18 +169,19 @@ $text-light: #818181;
   align-items: center;
   font-size: 1.4em;
   color: white;
-  transition: all 400ms ease-out;
+  transition: border 400ms ease-out;
+  transition: background-color 100ms ease-out;
   cursor: pointer;
+}
+
+.call1800-dialpad_call-in-progress .call1800-dialpad__key:active,
+.call1800-dialpad_ready .call1800-dialpad__key:active {
+  background-color: green;
 }
 
 .call1800-dialpad_establishing-connection .call1800-dialpad__key {
   color: $text-light;
   border-color: $text-light;
-}
-
-.call1800-dialpad_calling .call1800-dialpad__key {
-  // color: $text-light;
-  // border-color: $text-light;
 }
 
 .call1800-dialpad__clear-actions {
@@ -190,7 +192,7 @@ $text-light: #818181;
   transition: all 400ms ease-out;
 }
 
-.call1800-dialpad_calling .call1800-dialpad__clear-actions {
+.call1800-dialpad_call-in-progress .call1800-dialpad__clear-actions {
   color: $text-light;
 
   svg path {

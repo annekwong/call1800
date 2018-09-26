@@ -1,6 +1,6 @@
 {
   "name": "call1800",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/bundle.js",
   "style": "dist/main.css",
