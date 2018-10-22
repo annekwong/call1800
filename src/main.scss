@@ -142,6 +142,10 @@ $text-light: #818181;
   }
 }
 
+.call1800-dialpad_invalid .call1800-dialpad__call-hangup {
+  background-color: gray;
+}
+
 .call1800-dialpad_call-in-progress .call1800-dialpad__call-hangup,
 .call1800-dialpad_establishing-connection .call1800-dialpad__call-hangup {
   background-color: #f4595f;
@@ -175,7 +179,8 @@ $text-light: #818181;
 }
 
 .call1800-dialpad_call-in-progress .call1800-dialpad__key:active,
-.call1800-dialpad_ready .call1800-dialpad__key:active {
+.call1800-dialpad_ready .call1800-dialpad__key:active,
+.call1800-dialpad_invalid .call1800-dialpad__key:active {
   background-color: green;
 }
 
