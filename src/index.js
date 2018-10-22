@@ -155,11 +155,13 @@ class Dialpad {
     this.deleteLastBtn.addEventListener('click', () => {
       if (this.calling) return;
       this.numberInput.value = this.numberInput.value.slice(0, -1);
+      this.validate();
     });
 
     this.deleteAllBtn.addEventListener('click', () => {
       if (this.calling) return;
       this.numberInput.value = '';
+      this.validate();
     });
   }
 
