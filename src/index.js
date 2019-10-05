@@ -229,6 +229,7 @@ class Dialpad {
       ua: {
         wsServers: WS_SERVERS,
         traceSip: false,
+        register: false,
       },
     };
 
