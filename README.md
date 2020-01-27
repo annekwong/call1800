@@ -3,6 +3,9 @@
 
 call1800 is an embeddable element that allows your users make calls to 1800 numbers completely free.
 
+You can see this project in action at <a href="https://call1800.org/" target="_blank">https://www.call1800.org</a>
+<br>
+
 <p align="center"><a href="https://call1800.org/" target="_blank"><img width="350"src="screenshot.jpg"></a></p>
 
 ## Installation
